@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
-  const [EnteredTitle, setEnteredTitle] = useState("");
+const ExpenseForm = (props) => {
+  const [EnteredTitle, setEnteredTitle] = useState(""); //writing these lines for changing the values after completing landing page load
   const [EnteredAmount, setEnteredAmount] = useState("");
   const [EnteredDate, setEnteredDate] = useState("");
 
@@ -42,13 +42,28 @@ const ExpenseForm = () => {
     //     enteredData: event.target.value
     // })
   };
-
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: EnteredTitle,
+      amount: EnteredAmount,
+      date: new Date(EnteredDate),
+    };
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={EnteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -56,6 +71,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
+            value={EnteredAmount}
             onChange={AmountChangeHandler}
           />
         </div>
@@ -65,6 +81,7 @@ const ExpenseForm = () => {
             type="date"
             min="2023-01-01"
             max="2024-01-01"
+            value={EnteredDate}
             onChange={DataChangeHandler}
           />
         </div>
