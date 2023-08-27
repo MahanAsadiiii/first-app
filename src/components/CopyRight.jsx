@@ -4,12 +4,12 @@ import logo from '../assets/logo-white.svg'
 function CopyRight() {
   return (
 
-    <div className='flex items-center justify-between bg-black text-white py-2 px-3 md:px-14'>
+    <div style={{ margin:"100px 70px", display: "flex", justifyContent: "space-between"}}>
       <img src={logo} height={50} width={100} alt="logo-sign" />
-      <h5 className='text-xs font-light '>© 2023 Mahan Asadi.</h5>
+      <h5 style={{color: "white",fontFamily: "sans-serif"}}>© 2023 Mahan Asadi.</h5>
     </div>
 
   )
 }
 
-export { CopyRight }
+export default CopyRight 

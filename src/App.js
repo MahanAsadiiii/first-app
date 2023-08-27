@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
+import  CopyRight  from "./components/CopyRight";
 
 const Dummy_Expenses = [
   {
@@ -43,9 +43,10 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor: "black", height: "100vh", paddingTop: "50px"}}>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
+      <CopyRight/>
     </div>
   );
 };
